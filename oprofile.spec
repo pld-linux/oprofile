@@ -1,12 +1,13 @@
 Summary:	System-wide profiler
 Summary(pl):	Ogólnosystemowy profiler
 Name:		oprofile
-Version:	0.8
+Version:	0.8.1
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
-# Source0-md5:	8f5123f7646edbdbe24f0cb6c86114ee
+# Source0-md5:	3019c776dbf5dd21696c05bf509dea1a
+# Source0-size:	601302
 URL:		http://oprofile.sourceforge.net/
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel

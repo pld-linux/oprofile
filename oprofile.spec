@@ -1,15 +1,16 @@
 Summary:	System-wide profiler
 Summary(pl):	Ogólnosystemowy profiler
 Name:		oprofile
-Version:	0.5.4
+Version:	0.7
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
-# Source0-md5:	be655a8b09207ef8a47706ff23c9c0d8
+# Source0-md5:	7ea8ee0c2efd2edf4294ff8316f2cb66
 URL:		http://oprofile.sourceforge.net/
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel
+# Requires:	kernel >= 2.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,11 +35,26 @@ u¿ywaæ tak¿e do podstawego profilowania czasu wykonywania. Profilowany
 jest ca³y kod: procedury obs³ugi przerwañ sprzêtowych i programowych,
 modu³y j±dra, j±dro, biblioteki wspó³dzielone oraz aplikacje.
 
+%package gui
+Summary:	GUI for OProfile
+Summary(pl):	Graficzny interfejs u¿ytkownika do OProfile
+Group:		X11/Applications
+Requires:	%{name} = %{version}
+
+%description gui
+GUI for OProfile.
+
+%description gui -l pl
+Graficzny interfejs u¿ytkownika do OProfile.
+
 %prep
 %setup -q
 
 %build
-%configure
+%configure \
+	--with-kernel-support \
+	--with-qt-includes=/usr/include/qt
+
 %{__make}
 
 %install
@@ -52,6 +68,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man?/*
+%doc ChangeLog README TODO doc/*.html
+%attr(755,root,root) %{_bindir}/op_help
+%attr(755,root,root) %{_bindir}/opannotate
+%attr(755,root,root) %{_bindir}/opcontrol
+%attr(755,root,root) %{_bindir}/opgprof
+%attr(755,root,root) %{_bindir}/opreport
+%attr(755,root,root) %{_bindir}/oprofiled
+# XXX: keep only %{arch}-specific data?
+%{_datadir}/oprofile
+%{_mandir}/man1/*.1*
+
+%files gui
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/oprof_start

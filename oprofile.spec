@@ -31,7 +31,7 @@ przekszta³caj±cych dane na informacje.
 
 OProfile utrzymuje liczniki wydajno¶ci sprzêtu dla CPU, aby umo¿liwiæ
 profilowanie wielorakich interesuj±cych statystyk, których mo¿na
-u¿ywaæ tak¿e do podstawego profilowania czasu wykonywania. Profilowany
+u¿ywaæ tak¿e do podstawowego profilowania czasu wykonywania. Profilowany
 jest ca³y kod: procedury obs³ugi przerwañ sprzêtowych i programowych,
 modu³y j±dra, j±dro, biblioteki wspó³dzielone oraz aplikacje.
 

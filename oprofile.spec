@@ -1,4 +1,4 @@
-Summary:	system-wide profiler
+Summary:	System-wide profiler
 Summary(pl):	Ogólnosystemowy profiler
 Name:		oprofile
 Version:	0.5.4

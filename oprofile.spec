@@ -1,13 +1,12 @@
 Summary:	System-wide profiler
 Summary(pl):	Ogólnosystemowy profiler
 Name:		oprofile
-Version:	0.8.1
+Version:	0.8.2
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
-# Source0-md5:	3019c776dbf5dd21696c05bf509dea1a
-# Source0-size:	601302
+# Source0-md5:	a08c696910911d1f14585456829590f2
 URL:		http://oprofile.sourceforge.net/
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel
@@ -40,7 +39,7 @@ modu³y j±dra, j±dro, biblioteki wspó³dzielone oraz aplikacje.
 Summary:	GUI for OProfile
 Summary(pl):	Graficzny interfejs u¿ytkownika do OProfile
 Group:		X11/Applications
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description gui
 GUI for OProfile.

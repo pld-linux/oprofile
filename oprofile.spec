@@ -1,15 +1,16 @@
 Summary:	System-wide profiler
 Summary(pl):	Ogólnosystemowy profiler
 Name:		oprofile
-Version:	0.8.2
+Version:	0.9.1
 Release:	1
-License:	GPL
+License:	GPL v2
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
-# Source0-md5:	a08c696910911d1f14585456829590f2
+# Source0-md5:	c25a05406e30e81a6afbd3264191fa37
 URL:		http://oprofile.sourceforge.net/
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel
+BuildRequires:	rpmbuild(macros) >= 1.217
 # Requires:	kernel >= 2.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,7 +54,7 @@ Graficzny interfejs u¿ytkownika do OProfile.
 %build
 %configure \
 	--with-kernel-support \
-	--with-qt-includes=/usr/include/qt
+	--with-qt-includes=%{_includedir}/qt
 
 %{__make}
 
@@ -71,8 +72,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog README TODO doc/*.html
 %attr(755,root,root) %{_bindir}/*
 %exclude  %{_bindir}/oprof_start
-# XXX: keep only %{arch}-specific data?
-%{_datadir}/oprofile
+%dir %{_datadir}/oprofile
+%{_datadir}/oprofile/%{_target_base_arch}
+%{_datadir}/oprofile/rtc
+%{_datadir}/oprofile/stl.pat
 %{_mandir}/man1/*.1*
 
 %files gui

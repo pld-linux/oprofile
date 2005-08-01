@@ -11,7 +11,7 @@ URL:		http://oprofile.sourceforge.net/
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel
 BuildRequires:	rpmbuild(macros) >= 1.217
-# Requires:	kernel >= 2.6
+Requires:	kernel >= 2.6
 ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,9 +33,10 @@ przekszta³caj±cych dane na informacje.
 
 OProfile utrzymuje liczniki wydajno¶ci sprzêtu dla CPU, aby umo¿liwiæ
 profilowanie wielorakich interesuj±cych statystyk, których mo¿na
-u¿ywaæ tak¿e do podstawowego profilowania czasu wykonywania. Profilowany
-jest ca³y kod: procedury obs³ugi przerwañ sprzêtowych i programowych,
-modu³y j±dra, j±dro, biblioteki wspó³dzielone oraz aplikacje.
+u¿ywaæ tak¿e do podstawowego profilowania czasu wykonywania.
+Profilowany jest ca³y kod: procedury obs³ugi przerwañ sprzêtowych i
+programowych, modu³y j±dra, j±dro, biblioteki wspó³dzielone oraz
+aplikacje.
 
 %package gui
 Summary:	GUI for OProfile
@@ -73,10 +74,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog README TODO doc/*.html
 %attr(755,root,root) %{_bindir}/*
 %exclude  %{_bindir}/oprof_start
-%dir %{_datadir}/oprofile
-%{_datadir}/oprofile/%{_target_base_arch}
-%{_datadir}/oprofile/rtc
-%{_datadir}/oprofile/stl.pat
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/%{_target_base_arch}
+%{_datadir}/%{name}/rtc
+%{_datadir}/%{name}/stl.pat
 %{_mandir}/man1/*.1*
 
 %files gui

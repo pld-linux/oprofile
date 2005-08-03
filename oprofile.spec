@@ -11,7 +11,7 @@ URL:		http://oprofile.sourceforge.net/
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel
 BuildRequires:	rpmbuild(macros) >= 1.217
-Requires:	kernel >= 2.6
+Conflicts:	kernel < 2.6
 ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

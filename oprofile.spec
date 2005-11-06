@@ -2,7 +2,7 @@ Summary:	System-wide profiler
 Summary(pl):	Ogólnosystemowy profiler
 Name:		oprofile
 Version:	0.9.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
@@ -14,6 +14,8 @@ BuildRequires:	rpmbuild(macros) >= 1.217
 Conflicts:	kernel < 2.6
 ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define	oprofile_arch	%(echo "%{_target_base_arch}" | sed -e 's#x86_64#x86-64#')
 
 %description
 It consists of a kernel driver and a daemon for collecting sample
@@ -75,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %exclude  %{_bindir}/oprof_start
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/%{_target_base_arch}
+%{_datadir}/%{name}/%{oprofile_arch}
 %{_datadir}/%{name}/rtc
 %{_datadir}/%{name}/stl.pat
 %{_mandir}/man1/*.1*

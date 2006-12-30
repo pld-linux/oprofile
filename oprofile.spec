@@ -8,6 +8,7 @@ Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
 # Source0-md5:	c25a05406e30e81a6afbd3264191fa37
 URL:		http://oprofile.sourceforge.net/
+BuildRequires:	binutils-devel
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel
 BuildRequires:	rpmbuild(macros) >= 1.217

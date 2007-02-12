@@ -1,5 +1,5 @@
 Summary:	System-wide profiler
-Summary(pl):	Ogólnosystemowy profiler
+Summary(pl.UTF-8):   OgÃ³lnosystemowy profiler
 Name:		oprofile
 Version:	0.9.1
 Release:	2
@@ -29,29 +29,29 @@ can also be used for basic time-spent profiling. All code is profiled:
 hardware and software interrupt handlers, kernel modules, the kernel,
 shared libraries, and applications.
 
-%description -l pl
-Pakiet sk³ada siê ze sterownika dla j±dra oraz demona zbieraj±cego
-próbki danych, a tak¿e kilku narzêdzi do postprocesingu,
-przekszta³caj±cych dane na informacje.
+%description -l pl.UTF-8
+Pakiet skÅ‚ada siÄ™ ze sterownika dla jÄ…dra oraz demona zbierajÄ…cego
+prÃ³bki danych, a takÅ¼e kilku narzÄ™dzi do postprocesingu,
+przeksztaÅ‚cajÄ…cych dane na informacje.
 
-OProfile utrzymuje liczniki wydajno¶ci sprzêtu dla CPU, aby umo¿liwiæ
-profilowanie wielorakich interesuj±cych statystyk, których mo¿na
-u¿ywaæ tak¿e do podstawowego profilowania czasu wykonywania.
-Profilowany jest ca³y kod: procedury obs³ugi przerwañ sprzêtowych i
-programowych, modu³y j±dra, j±dro, biblioteki wspó³dzielone oraz
+OProfile utrzymuje liczniki wydajnoÅ›ci sprzÄ™tu dla CPU, aby umoÅ¼liwiÄ‡
+profilowanie wielorakich interesujÄ…cych statystyk, ktÃ³rych moÅ¼na
+uÅ¼ywaÄ‡ takÅ¼e do podstawowego profilowania czasu wykonywania.
+Profilowany jest caÅ‚y kod: procedury obsÅ‚ugi przerwaÅ„ sprzÄ™towych i
+programowych, moduÅ‚y jÄ…dra, jÄ…dro, biblioteki wspÃ³Å‚dzielone oraz
 aplikacje.
 
 %package gui
 Summary:	GUI for OProfile
-Summary(pl):	Graficzny interfejs u¿ytkownika do OProfile
+Summary(pl.UTF-8):   Graficzny interfejs uÅ¼ytkownika do OProfile
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 
 %description gui
 GUI for OProfile.
 
-%description gui -l pl
-Graficzny interfejs u¿ytkownika do OProfile.
+%description gui -l pl.UTF-8
+Graficzny interfejs uÅ¼ytkownika do OProfile.
 
 %prep
 %setup -q

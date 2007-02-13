@@ -1,5 +1,5 @@
 Summary:	System-wide profiler
-Summary(pl.UTF-8):   Ogólnosystemowy profiler
+Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
 Version:	0.9.1
 Release:	2
@@ -43,7 +43,7 @@ aplikacje.
 
 %package gui
 Summary:	GUI for OProfile
-Summary(pl.UTF-8):   Graficzny interfejs użytkownika do OProfile
+Summary(pl.UTF-8):	Graficzny interfejs użytkownika do OProfile
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 

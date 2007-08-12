@@ -1,17 +1,18 @@
 Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
-Version:	0.9.2
-Release:	3
+Version:	0.9.3
+Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
-# Source0-md5:	9af4e1e1aab89131516736bb60e9efba
+# Source0-md5:	bb91e4d5bd45ff0d5c3e6214653422b7
 URL:		http://oprofile.sourceforge.net/
 BuildRequires:	binutils-devel
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel
 BuildRequires:	rpmbuild(macros) >= 1.217
+Requires:	uname(release) >= 2.6
 Conflicts:	kernel < 2.6
 ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

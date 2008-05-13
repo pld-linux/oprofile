@@ -2,7 +2,7 @@ Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
 Version:	0.9.3
-Release:	7
+Release:	8
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
@@ -66,12 +66,17 @@ Graficzny interfejs użytkownika do OProfile.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_var}/lib/oprofile
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%preun
+%{_bindir}/opcontrol --shutdown 2>/dev/null 1>&2
+rm -rf %{_var}/lib/oprofile/*
 
 %files
 %defattr(644,root,root,755)
@@ -80,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %exclude  %{_bindir}/oprof_start
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1*
+%dir %{_var}/lib/oprofile
 
 %files gui
 %defattr(644,root,root,755)

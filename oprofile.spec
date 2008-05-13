@@ -75,8 +75,10 @@ install -d $RPM_BUILD_ROOT%{_var}/lib/oprofile
 rm -rf $RPM_BUILD_ROOT
 
 %preun
-%{_bindir}/opcontrol --shutdown 2>/dev/null 1>&2
-rm -rf %{_var}/lib/oprofile/*
+if [ "$1" = 0 ]; then
+	%{_bindir}/opcontrol --shutdown 2>/dev/null 1>&2
+	rm -rf %{_var}/lib/oprofile/*
+fi
 
 %files
 %defattr(644,root,root,755)

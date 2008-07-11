@@ -2,11 +2,12 @@ Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
 Version:	0.9.3
-Release:	8
+Release:	9
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
 # Source0-md5:	bb91e4d5bd45ff0d5c3e6214653422b7
+Patch0:		%{name}-gcc43.patch
 URL:		http://oprofile.sourceforge.net/
 BuildRequires:	binutils-devel
 BuildRequires:	popt-devel
@@ -56,6 +57,7 @@ Graficzny interfejs użytkownika do OProfile.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \

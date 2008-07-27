@@ -1,0 +1,11 @@
+--- oprofile-0.9.4/libutil++/file_manip.cpp~	2008-04-28 23:23:25.000000000 +0200
++++ oprofile-0.9.4/libutil++/file_manip.cpp	2008-07-27 23:36:29.394140193 +0200
+@@ -44,7 +44,7 @@
+ 	if (!in)
+ 		return false;
+ 
+-	int fd = open(destination.c_str(), O_RDWR|O_CREAT);
++	int fd = open(destination.c_str(), O_RDWR|O_CREAT,  S_IRUSR|S_IWUSR);
+ 	if (fd < 0)
+ 		return false;
+ 	close(fd);

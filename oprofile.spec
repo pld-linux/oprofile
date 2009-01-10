@@ -2,7 +2,7 @@ Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
 Version:	0.9.4
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz

@@ -10,6 +10,8 @@ Source0:	http://dl.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
 Patch0:		%{name}-fortify.patch
 Patch1:		%{name}-basename.patch
 URL:		http://oprofile.sourceforge.net/
+# not used directly, but build fails without it
+BuildRequires:	autoconf
 BuildRequires:	binutils-devel
 BuildRequires:	popt-devel
 BuildRequires:	qt-devel

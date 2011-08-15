@@ -162,6 +162,8 @@ fi
 %defattr(644,root,root,755)
 %{_libdir}/oprofile/libopagent.a
 
+%if %{with gui}
 %files gui
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/oprof_start
+%endif

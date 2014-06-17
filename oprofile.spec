@@ -137,9 +137,6 @@ fi
 %attr(755,root,root) %{_bindir}/opjitconv
 %attr(755,root,root) %{_bindir}/opreport
 %attr(755,root,root) %{_bindir}/oprofiled
-%if %{without gui}
-%exclude  %{_bindir}/oprof_start
-%endif
 %dir %{_libdir}/oprofile
 %attr(755,root,root) %{_libdir}/oprofile/libopagent.so.*.*.*
 %attr(755,root,root) %{_libdir}/oprofile/libopagent.so.1

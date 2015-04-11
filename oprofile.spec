@@ -10,7 +10,7 @@ Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
 Version:	1.0.0
-Release:	1
+Release:	2
 License:	GPL v2 (oprofile), LGPL v2.1+ (libopagent)
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
@@ -24,7 +24,7 @@ BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.217
 Requires:	uname(release) >= 2.6
 Conflicts:	kernel < 2.6
-ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664}
+ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664} x32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	oprofile_arch	%(echo "%{_target_base_arch}" | sed -e 's#x86_64#x86-64#')

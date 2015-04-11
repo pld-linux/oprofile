@@ -1,17 +1,20 @@
-#
-# Conditional build:
-%bcond_with	qt3	# Qt 3 instead of Qt 4
-%bcond_without	gui	# no Qt-based GUI
+# TODO:
+# Warning: The user account 'oprofile:oprofile' does not exist on the system.
+#         To profile JITed code, this special user account must exist.
+#         Please ask your system administrator to add the following user and group:
+#               user name : 'oprofile'
+#               group name: 'oprofile'
+#             The 'oprofile' group must be the default group for the 'oprofile' user.
 #
 Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
-Version:	0.9.7
-Release:	17
+Version:	1.0.0
+Release:	1
 License:	GPL v2 (oprofile), LGPL v2.1+ (libopagent)
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
-# Source0-md5:	8b5d1d9b65f84420bcc3234777ad3be3
+# Source0-md5:	ba0b340e5c421a93959776c836ed35b3
 URL:		http://oprofile.sourceforge.net/
 # not used directly, but build fails without it
 BuildRequires:	autoconf
@@ -19,16 +22,6 @@ BuildRequires:	binutils-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.217
-%if %{with gui}
-%if %{with qt3}
-BuildRequires:	qt-devel >= 3.0
-%else
-BuildRequires:	Qt3Support-devel >= 4
-BuildRequires:	QtCore-devel >= 4
-BuildRequires:	QtGui-devel >= 4
-BuildRequires:	qt4-build >= 4
-%endif
-%endif
 Requires:	uname(release) >= 2.6
 Conflicts:	kernel < 2.6
 ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664}
@@ -85,29 +78,13 @@ Static libopagent library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libopagent.
 
-%package gui
-Summary:	Qt-based GUI for OProfile
-Summary(pl.UTF-8):	Oparty na Qt graficzny interfejs użytkownika do OProfile
-Group:		X11/Applications
-Requires:	%{name} = %{version}-%{release}
-
-%description gui
-Qt-based GUI for OProfile.
-
-%description gui -l pl.UTF-8
-Oparty na Qt graficzny interfejs użytkownika do OProfile.
-
 %prep
 %setup -q
 
 %build
-%configure \
-	--enable-gui%{?with_gui:%{!?with_qt3:=qt4}}%{!?with_gui:=no} \
-	--with-kernel-support \
-	%{?with_qt3:--with-qt-includes=%{_includedir}/qt}
+%configure
 
-%{__make} \
-	%{?with_gui:%{!?with_qt3:UIC=uic3}}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -127,24 +104,27 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog* README TODO doc/*.html
+%doc ChangeLog* README TODO doc/*.html doc/*.png doc/*.xsd
+%attr(755,root,root) %{_bindir}/ocount
 %attr(755,root,root) %{_bindir}/opannotate
 %attr(755,root,root) %{_bindir}/oparchive
-%attr(755,root,root) %{_bindir}/opcontrol
+%attr(755,root,root) %{_bindir}/op-check-perfevents
+%attr(755,root,root) %{_bindir}/operf
 %attr(755,root,root) %{_bindir}/opgprof
 %attr(755,root,root) %{_bindir}/ophelp
 %attr(755,root,root) %{_bindir}/opimport
 %attr(755,root,root) %{_bindir}/opjitconv
 %attr(755,root,root) %{_bindir}/opreport
-%attr(755,root,root) %{_bindir}/oprofiled
 %dir %{_libdir}/oprofile
 %attr(755,root,root) %{_libdir}/oprofile/libopagent.so.*.*.*
 %attr(755,root,root) %{_libdir}/oprofile/libopagent.so.1
 %{_datadir}/%{name}
 %dir %{_var}/lib/oprofile
+%{_mandir}/man1/ocount.1*
 %{_mandir}/man1/opannotate.1*
 %{_mandir}/man1/oparchive.1*
-%{_mandir}/man1/opcontrol.1*
+%{_mandir}/man1/op-check-perfevents.1*
+%{_mandir}/man1/operf.1*
 %{_mandir}/man1/opgprof.1*
 %{_mandir}/man1/ophelp.1*
 %{_mandir}/man1/opimport.1*
@@ -160,9 +140,3 @@ fi
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/oprofile/libopagent.a
-
-%if %{with gui}
-%files gui
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/oprof_start
-%endif

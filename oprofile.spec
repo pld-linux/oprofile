@@ -9,21 +9,22 @@
 Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
-Version:	1.0.0
-Release:	5
+Version:	1.1.0
+Release:	1
 License:	GPL v2 (oprofile), LGPL v2.1+ (libopagent)
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
-# Source0-md5:	ba0b340e5c421a93959776c836ed35b3
+# Source0-md5:	248c4c069f9476f427fa7195563f9867
 URL:		http://oprofile.sourceforge.net/
 # not used directly, but build fails without it
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	binutils-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	linux-libc-headers >= 7:2.6.31
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.217
-Requires:	uname(release) >= 2.6
-Conflicts:	kernel < 2.6
+Requires:	uname(release) >= 2.6.31
+Conflicts:	kernel < 2.6.31
 ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664} x32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

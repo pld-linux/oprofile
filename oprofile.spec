@@ -10,12 +10,13 @@ Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
 Version:	1.1.0
-Release:	10
+Release:	11
 License:	GPL v2 (oprofile), LGPL v2.1+ (libopagent)
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
 # Source0-md5:	248c4c069f9476f427fa7195563f9867
 Patch0:		%{name}-c++.patch
+Patch1:		binutils-2.34.patch
 URL:		http://oprofile.sourceforge.net/
 # not used directly, but build fails without it
 BuildRequires:	autoconf >= 2.50
@@ -83,6 +84,7 @@ Statyczna biblioteka libopagent.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure

@@ -1,4 +1,5 @@
 # TODO:
+# - java agents
 # Warning: The user account 'oprofile:oprofile' does not exist on the system.
 #         To profile JITed code, this special user account must exist.
 #         Please ask your system administrator to add the following user and group:
@@ -9,25 +10,24 @@
 Summary:	System-wide profiler
 Summary(pl.UTF-8):	Ogólnosystemowy profiler
 Name:		oprofile
-Version:	1.1.0
-Release:	11
+Version:	1.4.0
+Release:	1
 License:	GPL v2 (oprofile), LGPL v2.1+ (libopagent)
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
-# Source0-md5:	248c4c069f9476f427fa7195563f9867
-Patch0:		%{name}-c++.patch
-Patch1:		binutils-2.34.patch
+# Source0-md5:	ac0ff685ec9735e30d6a4d19de0efed7
 URL:		http://oprofile.sourceforge.net/
 # not used directly, but build fails without it
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	binutils-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	linux-libc-headers >= 7:2.6.31
+BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.217
 Requires:	uname(release) >= 2.6.31
 Conflicts:	kernel < 2.6.31
-ExclusiveArch:	alpha arm %{ix86} ia64 mips ppc ppc64 %{x8664} x32
+ExclusiveArch:	alpha %{arm} %{ix86} ia64 mips ppc ppc64 %{x8664} x32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	oprofile_arch	%(echo "%{_target_base_arch}" | sed -e 's#x86_64#x86-64#')
@@ -83,8 +83,6 @@ Statyczna biblioteka libopagent.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %configure
@@ -111,9 +109,9 @@ fi
 %defattr(644,root,root,755)
 %doc ChangeLog* README TODO doc/*.html doc/*.png doc/*.xsd
 %attr(755,root,root) %{_bindir}/ocount
+%attr(755,root,root) %{_bindir}/op-check-perfevents
 %attr(755,root,root) %{_bindir}/opannotate
 %attr(755,root,root) %{_bindir}/oparchive
-%attr(755,root,root) %{_bindir}/op-check-perfevents
 %attr(755,root,root) %{_bindir}/operf
 %attr(755,root,root) %{_bindir}/opgprof
 %attr(755,root,root) %{_bindir}/ophelp
@@ -125,14 +123,15 @@ fi
 %attr(755,root,root) %{_libdir}/oprofile/libopagent.so.1
 %{_datadir}/%{name}
 %dir %{_var}/lib/oprofile
+%{_mandir}/man1/op-check-perfevents.1*
 %{_mandir}/man1/ocount.1*
 %{_mandir}/man1/opannotate.1*
 %{_mandir}/man1/oparchive.1*
-%{_mandir}/man1/op-check-perfevents.1*
 %{_mandir}/man1/operf.1*
 %{_mandir}/man1/opgprof.1*
 %{_mandir}/man1/ophelp.1*
 %{_mandir}/man1/opimport.1*
+%{_mandir}/man1/opjitconv.1*
 %{_mandir}/man1/opreport.1*
 %{_mandir}/man1/oprofile.1*
 

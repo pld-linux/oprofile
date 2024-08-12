@@ -1,0 +1,11 @@
+--- oprofile-1.4.0/configure.ac.orig	2020-07-20 17:26:39.000000000 +0200
++++ oprofile-1.4.0/configure.ac	2024-08-12 15:29:17.657833036 +0200
+@@ -118,6 +118,8 @@
+ 				#include <asm/unistd.h>
+ 				#include <sys/types.h>
+ 				#include <string.h>
++				#include <sys/syscall.h>
++				#include <unistd.h>
+ 			]],
+ 			[[struct perf_event_attr attr;
+ 				pid_t pid;

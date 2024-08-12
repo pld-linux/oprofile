@@ -16,11 +16,14 @@ License:	GPL v2 (oprofile), LGPL v2.1+ (libopagent)
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/oprofile/%{name}-%{version}.tar.gz
 # Source0-md5:	ac0ff685ec9735e30d6a4d19de0efed7
+Patch0:		gcc14.patch
 URL:		http://oprofile.sourceforge.net/
 # not used directly, but build fails without it
 BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
 BuildRequires:	binutils-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 BuildRequires:	linux-libc-headers >= 7:2.6.31
 BuildRequires:	pkgconfig
 BuildRequires:	popt-devel
@@ -83,8 +86,13 @@ Statyczna biblioteka libopagent.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
